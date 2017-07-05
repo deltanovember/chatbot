@@ -1,5 +1,26 @@
  function robotResponse(userInput) {
 
+  var defaultFallback = "I'm sorry, I do not understand. Would you like to know what I can do?"; 
+  var positiveSentiment = ['good', 'great'];
+  var negativeSentiment = ['bad', ' lousy'];
+  var yesSent = ['yes', 'yup'];
+  var noSent = ['no', 'nah'];
+  
+  if (userInput.toLowerCase().indexOf(positiveSentiment)) {
+   return "Great to hear!" + "<br>" + "What is your age?";
+  } elseif (userInput.toLowerCase().indexOf(negativeSentiment)) {
+   return "I'm sorry to hear." + "<br>" + "What is your age?";
+  } else {
+   return function fallbackFunc(userInput) {
+    return defaultFallback;
+    if (userInput.toLowerCase().indexOf(yesSent) {
+      return "Try typing in \"help\"."; 
+     } else {
+      return "Sorry I couldn\'t help.";
+     };
+   };
+  };
+  
  	var response = "I'm sorry but I could not determine your salary. Please try again.";
  	var helpWords = ["help", "assist", "aid"];
 
@@ -8,6 +29,7 @@
  			return "It seems like you need assistance. Please visit http://www.test.com/help for further help";	
  		}
  	}
+  
 
  	var age = userInput.match(/\d+/g);
  	if (null == age) {
