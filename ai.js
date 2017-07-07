@@ -1,26 +1,37 @@
- function robotResponse(userInput) {
+var currentQuestion = 0; 	
+var state = {
+	 1: "Does your animal have wings?",
+	 2: "Does your animal have feathers?"
+};
 
- 	var response = "I'm sorry but I could not determine your salary. Please try again.";
- 	var helpWords = ["help", "assist", "aid"];
+function robotResponse(userInput) {
 
- 	for (var helpWord of helpWords) {
- 		if (userInput.toLowerCase().indexOf(helpWord) != -1) {
- 			return "It seems like you need assistance. Please visit http://www.test.com/help for further help";	
- 		}
- 	}
+	if (userInput.toLowerCase().indexOf("no") != -1) {
+		if (currentQuestion == 0)
+			return "Your animal is an insect";
+		if (currentQuestion == 1) {
+			currentQuestion++;
+			return "Does your animal lay eggs?";
+		}
 
- 	var age = userInput.match(/\d+/g);
- 	if (null == age) {
  		return "I'm sorry. I could not determine your age. Please call (02) 1234 5678 for assistance.";
- 	} else {
- 		var userAge = parseInt(age[0]);
- 		if (userAge > 125) {
- 			return "Your age is: " + age[0] + ". Are you sure?";
- 		}
- 		else {
- 			return "Your age is: " + age[0];
+		
+ 	} else if (userInput.toLowerCase().indexOf("yes") != -1) {
+ 		if (currentQuestion == 0) {
+
+ 			// Increment the question counter
+ 			currentQuestion++;
+
+ 			// Ask the next question
+ 			return state[currentQuestion];
  		}
  		
+ 	} else {
+ 		return "Please enter your answer in the form of 'Yes' or 'No'";
  	}
+  	return response;
 
- }
+
+}
+
+
