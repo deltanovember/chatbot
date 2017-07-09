@@ -1,6 +1,6 @@
 var currentResponse = ""; 	
 var decisionTree = {
-	"": "Does your animal have a skeleton?"
+	"": "Does your animal have a skeleton?",
 	"0": "Your animal is an insect",
 	"1": "Does your animal have wings?",
 	"10": "Does your animal lay eggs?",	
