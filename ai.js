@@ -36,12 +36,12 @@ function robotResponse(userInput) {
  	} else {
  		return "Please enter your answer in the form of 'Yes' or 'No'. " + decisionTree[currentResponse];
  	}
- 	
+ 	answer = decisionTree[currentResponse];
  	if (answer.indexOf("Your animal is") != -1) {
  		$("#btn-input").prop('disabled', true);
  		$("#btn-chat").prop('disabled', true);
  	}
-	answer = decisionTree[currentResponse];
+	
   	return answer;
 }
 
