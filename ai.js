@@ -1,4 +1,11 @@
 var currentResponse = ""; 	
+
+var YEARS = 0;
+var START_DATE = 1;
+var RENT = 2;
+
+var state = 0;
+
 var decisionTree = {
 	"": "Does your animal have a skeleton?",
 	"0": "Your animal is an insect",
