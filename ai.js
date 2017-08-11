@@ -14,12 +14,12 @@ function robotResponse(userInput) {
 
 	if (state == YEARS) {
 
-		if (isNumber(userInput)) {
+		if (isNumber(userInput) && parseInt(userInput) >= 3) {
 			response = "Please enter the start date of the lease."
 			leaseYears = userInput;
 			state++;
 		} else {
-			response = "Please enter the number of years in the lease as a number only eg 5"
+			response = "Please enter the number of years in the lease as a number only eg 5. The lease must be for three or more years."
 		}
 
  	} 
@@ -43,7 +43,9 @@ function robotResponse(userInput) {
  		if (isCurrency(userInput)) {
 
  			leaseRent = userInput;
- 			response = "I am now preparing the following lease:<br><br>Years: " + leaseYears + " <br>Start date:" + leaseStartDate + "<br>Rent:" + leaseRent;
+ 			var leaseRentAsNumber = Number(leaseRent.replace(/[^0-9\.]+/g,""));
+ 			var totalRent = leaseRentAsNumber * leaseYears;
+ 			response = "I am now preparing the following lease:<br><br>Years: " + leaseYears + " <br>Start date:" + leaseStartDate + "<br>Rent:" + leaseRent + "<br>Total rent: $" + totalRent.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');;
 	  		$("#btn-input").prop('disabled', true);
 	 		$("#btn-chat").prop('disabled', true);
 
